@@ -1,0 +1,79 @@
+name: "DECO"
+
+long_name: "Dyslexia Eye Tracking COrpus"
+
+description: |
+  DECO dataset:
+
+  DECO contains word-level eye-tracking measures from 20 Dutch-English bilingual
+  adults with a diagnosis of developmental dyslexia, reading the entire novel
+  The Mysterious Affair at Styles (Agatha Christie; approximately 60,000 words).
+  Following the GECO corpus (Cop et al., 2017), participants read half of the novel in
+  their first language (Dutch) and the other half in their second language
+  (English), with the language order counterbalanced across participants.
+  DECO was collected under conditions matched to GECO, so GECO can serve as a
+  control dataset of typical readers.
+
+  Reading was spread over four recording sessions (one per ``PART`` of the novel).
+  Recording was monocular (right eye for all but two participants) with a chinrest.
+  Word-level measures were extracted with SR Research Data Viewer.
+
+  Data were collected in two data-collection periods with different set-ups.
+  The period is given in the ``SESSION`` column:
+
+  - ``SESSION == 1`` (participants 1-15): tower-mounted EyeLink 1000, 1000 Hz,
+    22-inch monitor at 1024 x 768 px, 60 Hz, viewing distance 70 cm,
+    14-pt Courier New.
+  - ``SESSION == 2`` (participants 16-20): desktop-mounted EyeLink 1000 Plus,
+    1000 Hz, 24-inch monitor at 1920 x 1080 px, 60 Hz, viewing distance
+    approximately 93 cm, 22-pt Courier New.
+
+  In both set-ups, three characters correspond to approximately one degree of
+  visual angle. Because the pixel coordinates (e.g., ``WORD_FIRST_FIXATION_X``)
+  are in different screen spaces for the two periods, no single ``experiment``
+  definition is given here; filter or convert by ``SESSION`` before using them.
+  Interest areas that could not be aligned across the two set-ups are listed in
+  the appendix of the paper and in the repository.
+
+  Participant 1 scored at chance on the comprehension questions and was excluded
+  from the analyses in the paper, but is included in the data.
+
+  See the `DECO paper <https://doi.org/10.3758/s13428-026-03232-5>`__ and the
+  `DECO repository <https://github.com/SamBoeve/Dyslexia-Eyetracking-COrpus-DECO>`__
+  for details, stimulus materials and participant information.
+
+resources:
+  - content: precomputed_reading_measures
+    source:
+      url: "https://zenodo.org/records/23350163/files/DECO.csv"
+      filename: "DECO.csv"
+      md5: "b5560dddf840b1d16c534b2b8c718edf"
+
+# The two data-collection periods used different set-ups
+# below are the details of the first data-collection session 
+# details for SESSION == 2 are commented out 
+
+experiment:
+  eyetracker:
+    vendor: EyeLink
+    model: EyeLink 1000 
+    sampling_rate: 1000
+  screen:
+    width_px: 1024
+    height_px: 768
+    width_cm: 41.7
+    height_cm: 31.3
+    distance_cm: 70
+    origin: "upper left"
+
+#   eyetracker:
+#     vendor: EyeLink
+#     model: EyeLink 1000 Plus
+#     sampling_rate: 1000
+#   screen:
+#     width_px: 1920
+#     height_px: 1080
+#     width_cm: 53
+#     height_cm: 30
+#     distance_cm: 93
+#     origin: "upper left"
